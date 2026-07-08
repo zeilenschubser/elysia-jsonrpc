@@ -15,7 +15,7 @@ const app = new Elysia()
       origin: '*',
       methods: ['GET', 'POST', 'OPTIONS'],
       exposedHeaders: ['Mcp-Session-Id'],
-      allowedHeaders: ['Content-Type', 'mcp-session-id', 'last-event-id']
+      allowedHeaders: ['Content-Type', 'Authorization', 'mcp-session-id', 'last-event-id']
     })
   )
   .use(
