@@ -5,10 +5,19 @@
 
 ```
 import { Elysia } from "elysia";
+import { cors } from '@elysia/cors'
 import elysiaJsonRPC from "../dist";
 import { JSONRPCHandlerArgument, JSONRPCHandlerReturnType, JSONRPCRequestId } from "../dist/rpc.types";
 
 const app = new Elysia()
+  .use(
+    cors({
+      origin: '*',
+      methods: ['GET', 'POST', 'OPTIONS'],
+      exposedHeaders: ['Mcp-Session-Id'],
+      allowedHeaders: ['Content-Type', 'mcp-session-id', 'last-event-id']
+    })
+  )
   .use(
     elysiaJsonRPC({
       version: "2.0",
